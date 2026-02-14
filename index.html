@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Will You Be My Valentine? ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: #ff4d4d;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-width: 140px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .btn-yes {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-yes:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        
+        .btn-no {
+            background: #ff4444;
+            color: white;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-no:active {
+            transform: scale(0.95);
+        }
+        
+        .shy-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            color: #ff6b6b;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+            animation: bounce 1s ease;
+            max-width: 90%;
+            pointer-events: none;
+        }
+        
+        .shy-message.show {
+            display: flex;
+        }
+        
+        .shy-message span {
+            font-size: 1.5rem;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .photo-section {
+            margin: 2rem 0 1rem;
+        }
+        
+        .photo-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+        }
+        
+        .photo-caption {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: float 6s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1.3rem;
+                min-width: 120px;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .shy-message {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+        }
+        
+        /* Small phones */
+        @media (max-width: 380px) {
+            .buttons {
+                gap: 1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1.2rem;
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <h1>❤️ Happy Valentine's Day! ❤️</h1>
+        <div class="question">Will you be my valentine?</div>
+        
+        <!-- Photo section - REPLACE THE URL WITH YOUR PHOTO -->
+        <div class="photo-section">
+            <img src="image/dudu.png"
+                 alt="Our Photo" 
+                 id="mainPhoto">
+            <div class="photo-caption">You and me 💕</div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn btn-yes" id="yesBtn">Yes ❤️</button>
+            <button class="btn btn-no" id="noBtn">No 😢</button>
+        </div>
+    </div>
+    
+    <div class="shy-message" id="shyMessage">
+        <span>😳</span> The No is very shy!
+    </div>
+    
+    <script>
+        // Floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            document.getElementById('hearts').appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        // Create hearts every 500ms
+        setInterval(createHeart, 500);
+        
+        // Shy No button functionality
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const shyMessage = document.getElementById('shyMessage');
+        
+        // Store the container boundaries for button movement
+        const container = document.querySelector('.container');
+        const buttonsContainer = document.querySelector('.buttons');
+        
+        // Variable to track if we're on mobile
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
+        // Function to move the No button
+        function moveNoButton() {
+            // Show shy message
+            shyMessage.classList.add('show');
+            
+            // Hide message after 2 seconds
+            setTimeout(() => {
+                shyMessage.classList.remove('show');
+            }, 2000);
+            
+            // Get container dimensions
+            const containerRect = buttonsContainer.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            
+            // Calculate new position within the buttons container
+            const maxX = containerRect.width - btnRect.width - 20;
+            const maxY = containerRect.height - btnRect.height - 20;
+            
+            // Generate random position
+            let newX = Math.random() * maxX;
+            let newY = Math.random() * maxY;
+            
+            // Keep button within container bounds
+            newX = Math.max(0, Math.min(newX, maxX));
+            newY = Math.max(0, Math.min(newY, maxY));
+            
+            // Apply new position
+            noBtn.style.position = 'relative';
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+            
+            // Add a little shake animation
+            noBtn.style.transform = 'rotate(5deg)';
+            setTimeout(() => {
+                noBtn.style.transform = 'rotate(-5deg)';
+            }, 100);
+            setTimeout(() => {
+                noBtn.style.transform = 'rotate(0deg)';
+            }, 200);
+        }
+        
+        // Event listeners for No button
+        if (isMobile) {
+            // For mobile: use touch events
+            noBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                moveNoButton();
+            });
+        } else {
+            // For desktop: use mouse events
+            noBtn.addEventListener('mouseenter', moveNoButton);
+            noBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                moveNoButton();
+            });
+        }
+        
+        // Yes button functionality - redirect to second page
+        yesBtn.addEventListener('click', function() {
+            // Save any data to localStorage if needed
+            localStorage.setItem('valentineAnswer', 'yes');
+            // Redirect to the second page
+            window.location.href = 'valentine-yes.html';
+        });
+        
+        // For mobile, also handle touch on yes button
+        yesBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            window.location.href = 'valentine-yes.html';
+        });
+        
+        // Prevent No button from being clicked on mobile
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            moveNoButton();
+        });
+        
+        // Add some confetti effect when page loads
+        for(let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+    </script>
+</body>
+</html>

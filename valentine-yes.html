@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Yay! You Said Yes! ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            animation: popIn 0.5s ease;
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        h1 {
+            color: #ff4d4d;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .message {
+            font-size: 1.8rem;
+            color: #4CAF50;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+        
+        .photo-gallery {
+            margin: 2rem 0;
+        }
+        
+        .main-photo {
+            margin-bottom: 2rem;
+        }
+        
+        .main-photo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 5px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .main-photo img:hover {
+            transform: scale(1.02);
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .photo-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+        
+        .love-note {
+            background: #ff4d4d;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+        
+        .heart {
+            display: inline-block;
+            color: #ff4d4d;
+            animation: heartbeat 1.5s ease infinite;
+            font-size: 2rem;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .back-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-button:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .message {
+                font-size: 1.5rem;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            
+            .photo-grid img {
+                height: 120px;
+            }
+            
+            .love-note {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Small phones */
+        @media (max-width: 380px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-grid img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ Yay! You Said Yes! ❤️</h1>
+        <div class="message">Best Valentine's Day Ever! 🎉</div>
+        
+        <!-- Main Photo - REPLACE THIS URL WITH YOUR FAVORITE PHOTO -->
+        <div class="main-photo">
+            <img src="image/us.jpeg" 
+                 alt="Our Special Moment"
+                 id="mainPhoto">
+        </div>
+        
+        <div class="love-note">
+            <span class="heart">❤️</span>
+            I'm so happy you said yes! You make every day feel like Valentine's Day. 
+            Can't wait to celebrate with you!
+            <span class="heart">❤️</span>
+        </div>
+        
+        <!-- Photo Gallery - REPLACE THESE URLs WITH YOUR PHOTOS -->
+        <h2 style="color: #333; margin-bottom: 1rem;">Our Beautiful Memories</h2>
+        <div class="photo-grid" id="photoGrid">
+            <img src="image/us6.png" alt="Memory 1">
+            <img src="image/us2.jpeg" alt="Memory 2">
+            <img src="image/us3.jpeg" alt="Memory 3">
+            <img src="image/us4.jpeg" alt="Memory 4">
+        </div>
+        
+        <!-- Back button to return to first page -->
+        <button class="back-button" onclick="goBack()">← Back to Question</button>
+    </div>
+    
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.style.position = 'fixed';
+            heart.style.color = '#ff4d4d';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '100%';
+            heart.style.animation = 'floatUp ' + (Math.random() * 3 + 4) + 's linear';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '0';
+            heart.innerHTML = '❤️';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        // Add animation style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+        
+        // Function to go back to first page
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+        
+        // You can also pre-load photos here if needed
+        console.log('She said yes! 💕');
+        
+        // Create initial hearts
+        for(let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+    </script>
+</body>
+</html>
